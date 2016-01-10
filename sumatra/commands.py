@@ -29,6 +29,7 @@ from sumatra.versioncontrol import get_working_copy, get_repository, Uncommitted
 from sumatra.formatting import get_diff_formatter
 from sumatra.records import MissingInformationError
 from sumatra.core import TIMESTAMP_FORMAT
+from sumatra.forrestgumshelper import ForrestHelper
 
 
 logger = logging.getLogger("Sumatra")
@@ -408,7 +409,9 @@ def run(argv):
     if args.tag:
         project.add_tag(run_label, args.tag)
 
-    
+    forrest = ForrestHelper(project, project.get_record(run_label))
+    forrest.set_gams_version()
+
 def list(argv):  # add 'report' and 'log' as aliases
     """List records belonging to the current project."""
     usage = "%(prog)s list [options] [TAGS]"
