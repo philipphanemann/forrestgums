@@ -14,6 +14,11 @@ setup(
     packages=find_packages(exclude=['tests*']),
     include_package_data=True,
     install_requires=['sumatra'],
+    entry_points={
+        'console_scripts': [
+            'forrest=forrest.main:start_web_server',
+        ],
+    },
     classifiers=[
         'Environment :: Console',
         'Intended Audience :: Science/Research',
