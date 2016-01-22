@@ -46,7 +46,7 @@
                 <button type="button" class="btn btn-xs pull-right" data-toggle="modal" data-target="#editTagsModal"><span class="glyphicon glyphicon-pencil"></span> Edit</button>
                 {% endif %}
                 {% for tag in record.tag_objects %}<span class="label label-default">{{tag.name}}</span> {% endfor %}</dd>
-            <dt>GAMS?</dt><dd>{{record.gams}}</dd>
+            <dt>Solver</dt><dd>{{record.solver}}</dd>
         </dl>
         {% if not read_only and not record.outcome %}
         <p><button type="button" class="btn btn-xs btn-success pull-right" data-toggle="modal" data-target="#editOutcomeModal"><span class="glyphicon glyphicon-plus"></span> Add outcome</button></p>
