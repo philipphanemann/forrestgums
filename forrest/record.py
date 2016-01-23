@@ -1,9 +1,9 @@
-"""This module contains all extensions of sumatra.records.Record necessary for GAMS."""
+"""This module contains all extensions of Django.records.Record necessary for GAMS."""
 
 from sumatra.programs import version_in_command_line_output
 
 
-def extend_sumatra_record_with_gams_metadata(record):
+def extend_django_record_with_gams_metadata(record):
     """Reads meta data from GAMS listing and ammends the sumatra record with it."""
     record.solver = 'unknown'
     record.solver_version = 'unknown'

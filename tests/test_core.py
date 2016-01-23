@@ -6,7 +6,7 @@ from sumatra.datastore import DataStore
 from sumatra.records import Record
 import pytest
 
-from forrest.record import extend_sumatra_record_with_gams_metadata
+from forrest.record import extend_django_record_with_gams_metadata
 
 
 Listing = namedtuple('Listing', ['path_to_file', 'solver', 'solver_version'])
@@ -38,12 +38,12 @@ def listing_and_sumatra_record(request):
 def test_detects_solver(listing_and_sumatra_record):
     listing = listing_and_sumatra_record[0]
     sumatra_record = listing_and_sumatra_record[1]
-    gams_record = extend_sumatra_record_with_gams_metadata(sumatra_record)
+    gams_record = extend_django_record_with_gams_metadata(sumatra_record)
     assert gams_record.solver.lower() == listing.solver
 
 
 def test_detects_solver_version(listing_and_sumatra_record):
     listing = listing_and_sumatra_record[0]
     sumatra_record = listing_and_sumatra_record[1]
-    gams_record = extend_sumatra_record_with_gams_metadata(sumatra_record)
+    gams_record = extend_django_record_with_gams_metadata(sumatra_record)
     assert gams_record.solver_version == listing.solver_version
