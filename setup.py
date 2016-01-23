@@ -13,7 +13,7 @@ setup(
     url='https://www.github.com/philipphanemann/forrestgums',
     packages=find_packages(exclude=['tests*']),
     include_package_data=True,
-    install_requires=['sumatra', 'GitPython'],
+    install_requires=['sumatra>0.7.4', 'GitPython'],
     entry_points={
         'console_scripts': [
             'forrest=forrest.main:start_web_server',
