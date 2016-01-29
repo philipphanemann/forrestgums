@@ -7,6 +7,7 @@
     $ smt init forrest --main trnsport.gms
     $ smt configure --add-plugin=forrest.executable
     $ smt configure --executable=gams
+    $ smt configure -d .
 
 Disallow command line parameters by setting `allow_command_line_parameters`
 in `.smt/project` to `false`.
