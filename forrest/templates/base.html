@@ -12,7 +12,8 @@
     <!-- Bootstrap core CSS -->
     <link href="/static/css/bootstrap.min.css" rel="stylesheet">
 
-    <!-- Custom Sumatra styles -->
+    <!-- Custom styles -->
+    <link href="/static/css/styles-forrest.css" rel="stylesheet">
     <link href="/static/css/styles.css" rel="stylesheet">
 
     {% block css %}
@@ -36,6 +37,8 @@
           <ul class="nav navbar-nav">
             {% block navbar %}
             {% endblock %}
+              <li>
+              <button type="button" class="btn btn-success btn-sm" id="run"><span class="glyphicon glyphicon-transfer"></span> Run simulation</button></li>
           </ul>
           <ul class="nav navbar-nav navbar-right">
             {% block navbar-right %}
@@ -67,3 +70,24 @@
     {% endblock %}
   </body>
 </html>
+
+<script type="text/javascript">
+
+$(document).ready(function() {
+
+    $('#run').click(function() {
+        $.ajax({
+            type: 'POST',
+            url: '/run/',
+            data: {'hello': 5},
+            success: function() {
+                success = true;
+            },
+            async: false
+        });
+        if (success) {
+            window.open('.','_self');
+        };
+    });
+});
+</script>

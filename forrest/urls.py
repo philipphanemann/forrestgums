@@ -20,6 +20,7 @@ P = {
 
 urlpatterns = patterns('',
                        (r'^$', ProjectListView.as_view()),
+                       (r'^run/$', 'forrest.views.run'),
                        (r'^settings/$', SettingsView.as_view()),
                        (r'^%(project)s/$' % P, RecordListView.as_view()),
                        (r'^%(project)s/about/$' % P, ProjectDetailView.as_view()),

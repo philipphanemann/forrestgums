@@ -60,13 +60,12 @@ def start_web_server(arguments=None):
 
     smt_root_dir = os.path.dirname(sumatra_web)
     db_config.update_settings(
-        INSTALLED_APPS=db_config._settings["INSTALLED_APPS"] + ['sumatra.web'],
+        INSTALLED_APPS=db_config._settings["INSTALLED_APPS"] + ['forrest'] + ['sumatra.web'],
         ROOT_URLCONF='forrest.urls',
         STATIC_URL='/static/',
         TEMPLATE_DIRS=(os.path.join(os.getcwd(), ".smt", "templates"),
                        os.path.join(os.path.dirname(__file__), "templates"),
                        os.path.join(smt_root_dir, "templates"),),
-        # TEMPLATE_DIRS=(os.path.join(os.path.dirname(__file__), "templates")),
         MIDDLEWARE_CLASSES=tuple(),
         READ_ONLY=args.read_only
     )
