@@ -3,7 +3,13 @@
 ## User Guide
 
 ### Project Configuration
-
+	
+	1. create simulation folder
+	2. create trnsport.gms file
+	3. command line:
+	$ git init 
+	$ git add .
+	$ git commit -m'initial commit'
     $ smt init forrest --main trnsport.gms
     $ smt configure --add-plugin=forrest.executable
     $ smt configure --executable=gams
