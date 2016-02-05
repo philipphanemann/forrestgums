@@ -33,18 +33,15 @@ def delayed_new_tab(url, delay):
 
 def start_web_server(arguments=None):
     """Launch the Forrest web interface"""
-    usage = "%prog [options] [PATH]"
     description = dedent("""\
-        Launch the Forrest web interface. If PATH is provided, it is taken as
-        the location of the record store. Otherwise, there must be a Sumatra
+        Launch the Forrest web interface. There must be a Sumatra
         project in the working directory and the record store for that project
         will be used.""")
-    parser = ArgumentParser(usage=usage,
-                            description=description)
+    parser = ArgumentParser(description=description)
     parser.add_argument('-a', '--allips', default=False, action="store_true",
                         help="run server on all IPs, not just localhost")
-    parser.add_argument('-p', '--port', metavar='PORT', default="8000",
-                        help="run server on this port number PORT")
+    parser.add_argument('-p', '--port', default="8000",
+                        help="run server on this port number")
     parser.add_argument('-n', '--no-browser', default=False, action="store_true",
                         help="do not open browser")
     parser.add_argument('-r', '--read_only', default=False, action="store_true",
