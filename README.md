@@ -18,8 +18,7 @@
 
 Use the GAMSListingDataStore instead of the normal FileSystemDataStore. For that replace
 ``sumatra.datastore.filesystem.FileSystemDataStore`` with ``forrest.datastore.GAMSListingDataStore``
-in the ``.smt/project``. For that to work properly in the web interface, currently you will need to
-``from forrest import datastore`` in ``sumatra.recordstore.django_store.models``.
+in the ``.smt/project``.
 
 Disallow command line parameters by setting `allow_command_line_parameters`
 in `.smt/project` to `false`.
