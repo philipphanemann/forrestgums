@@ -6,14 +6,8 @@
 	
 	1. create simulation folder
 	2. create trnsport.gms file
-	3. command line:
-	$ git init 
-	$ git add .
-	$ git commit -m'initial commit'
-    $ smt init forrest --main trnsport.gms
-    $ smt configure --add-plugin=forrest.executable
-    $ smt configure --executable=gams
-    $ smt configure -d .
+	3. command line: 
+     $ forrest init
 
 Disallow command line parameters by setting `allow_command_line_parameters`
 in `.smt/project` to `false`.
