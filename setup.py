@@ -17,6 +17,7 @@ setup(
     entry_points={
         'console_scripts': [
             'forrest=forrest.main:start_web_server',
+            'forrest-init=forrest.main:forrest_init'
         ],
     },
     classifiers=[

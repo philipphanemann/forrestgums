@@ -6,6 +6,7 @@ Web interface to Forrest.
 
 import sys
 import os
+import subprocess
 try:
     import thread
 except ImportError: # Python 3. TODO: move to higher level ``threading`` module
@@ -17,6 +18,7 @@ from sumatra.recordstore.django_store import DjangoRecordStore, db_config
 from sumatra.web import __file__ as sumatra_web
 from argparse import ArgumentParser
 from textwrap import dedent
+from git import Repo
 import time
 
 
@@ -30,6 +32,19 @@ def delayed_new_tab(url, delay):
     # maybe optional with python setup develop ?
     webbrowser.open_new_tab(url)
 
+def forrest_init():
+    """ configures sumatra """
+    with open(".gitignore", "w") as f:
+        ignorefiles = [".git/", "*.py"]
+        f.writelines('\n'.join(ignorefiles))
+    repo = Repo.init(".")
+    repo.index.add(["*.gms"])
+    repo.index.commit("initial commit")
+    subprocess.call(["smt", "init", "forrest", "--main", "trnsport.gms"])
+    subprocess.call(["smt", "configure", "--add-plugin", "forrest.executable"])
+    subprocess.call(["smt", "configure", "--executable", "gams"])
+    subprocess.call(["smt", "configure", "-d", "."])
+    #TODO disallow_command_line_parameters
 
 def start_web_server(arguments=None):
     """Launch the Forrest web interface"""
