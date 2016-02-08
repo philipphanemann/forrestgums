@@ -32,16 +32,6 @@ def delayed_new_tab(url, delay):
     # maybe optional with python setup develop ?
     webbrowser.open_new_tab(url)
 
-def calls(arguments=None):
-    """handle command line arguments """
-    if len(sys.argv) == 1:
-        start_web_server()
-    elif sys.argv[1] == "init":
-        forrest_init()
-    else:
-        raise ValueError("Too many arguments")
-
-
 def forrest_init():
     """ configures sumatra """
     with open(".gitignore", "w") as f:

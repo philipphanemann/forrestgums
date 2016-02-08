@@ -16,7 +16,8 @@ setup(
     install_requires=['sumatra>0.7.4', 'GitPython'],
     entry_points={
         'console_scripts': [
-            'forrest=forrest.main:calls',
+            'forrest=forrest.main:start_web_server',
+            'forrest-init=forrest.main:forrest_init'
         ],
     },
     classifiers=[
