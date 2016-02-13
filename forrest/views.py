@@ -24,6 +24,15 @@ class DataDetailView(sumatra.web.views.DataDetailView):
         return datakey
 
 
+class SettingsView(sumatra.web.views.SettingsView):
+    """Fixes the columns of the RecordListView to be viewed."""
+
+    def load_settings(self):
+        settings = super().load_settings()
+        settings['hidden_cols'] = [2, 3, 4, 7, 11]
+        return settings
+
+
 def run(request):
     """Running a default simulation with Sumatra.
 

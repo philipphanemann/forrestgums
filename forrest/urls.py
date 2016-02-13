@@ -9,8 +9,8 @@ from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 from sumatra.projects import Project
 from sumatra.records import Record
 from sumatra.web.views import (ProjectListView, ProjectDetailView, RecordListView,
-                               DataListView, SettingsView, DiffView, ImageListView)
-from forrest.views import RecordDetailView, DataDetailView
+                               DataListView, DiffView, ImageListView)
+from forrest.views import RecordDetailView, DataDetailView, SettingsView
 
 P = {
     'project': Project.valid_name_pattern,
