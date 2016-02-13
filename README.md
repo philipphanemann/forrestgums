@@ -9,12 +9,12 @@
 	3. command line:
 	$ git init
 	$ git add .
-	$ git commit -m'initial commit'
-    $ smt init forrest --main=trnsport.gms
+	$ git commit -m 'initial commit'
+    $ smt init forrest --main=trnsport.gms --labelgenerator=uuid --datapath=.
     $ smt configure --add-plugin=forrest.executable
     $ smt configure --add-plugin=forrest.datastore
     $ smt configure --executable=gams
-    $ smt configure -d .
+    $ smt configure --on-changed=store-diff
 
 Use the GAMSListingDataStore instead of the normal FileSystemDataStore. For that replace
 ``sumatra.datastore.filesystem.FileSystemDataStore`` with ``forrest.datastore.GAMSListingDataStore``
