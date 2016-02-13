@@ -28,14 +28,14 @@ def test_fails_with_file_not_being_a_listing(tmpdir):
 
 def test_moves_file_after_being_found(tmpdir):
     data_store = GAMSListingDataStore(root=str(tmpdir))
-    file1 = tmpdir.join('file1.lst')
-    file1.write("some results")
+    file = tmpdir.join('file.lst')
+    file.write("some results")
     data_store.find_new_data(datetime.now())
-    assert not file1.exists()
+    assert not file.exists()
 
 
 def test_creates_sub_folder_for_listings(tmpdir):
     data_store = GAMSListingDataStore(root=str(tmpdir))
-    tmpdir.join('file1.lst').write("some results")
+    tmpdir.join('file.lst').write("some results")
     data_store.find_new_data(datetime.now())
     assert (Path(str(tmpdir)) / GAMSListingDataStore.LST_SUB_FOLDER).exists()

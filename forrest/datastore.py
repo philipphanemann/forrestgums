@@ -3,12 +3,19 @@ from pathlib import Path
 import shutil
 
 from sumatra.datastore.filesystem import FileSystemDataStore as SumatraFileSystemDataStore, DataFile
-from sumatra.datastore.base import DataKey
 from sumatra.core import component
 
 
 @component
 class GAMSListingDataStore(SumatraFileSystemDataStore):
+    """Data store for GAMS listings.
+
+    The particularity with GAMS is that each output file will have the same name,
+    namely the name of the input file with a *.lst suffix. GAMSListingDataStore
+    aims at avoiding overwrites. For that it detects files from a GAMS run in the
+    configured folder and moves them into a subfolder structure:
+    ./gams-results/unique-folder-for-one-listing
+    """
 
     LST_SUB_FOLDER = Path('gams-results')
 

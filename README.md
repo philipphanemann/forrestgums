@@ -10,9 +10,9 @@
 	$ git init
 	$ git add .
 	$ git commit -m'initial commit'
-    $ smt init forrest --main trnsport.gms
+    $ smt init forrest --main=trnsport.gms
     $ smt configure --add-plugin=forrest.executable
-    $ smt configure --add-plugin forrest.datastore
+    $ smt configure --add-plugin=forrest.datastore
     $ smt configure --executable=gams
     $ smt configure -d .
 
