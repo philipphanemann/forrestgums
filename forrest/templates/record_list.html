@@ -58,14 +58,15 @@
         <th>Date/Time</th>
         <th>Reason</th>
         <th>Outcome</th>
-        <th>Input&nbsp;data</th>
-        <th>Output&nbsp;data</th>
         <th>Duration</th>
         <th>Processes</th>
+        <th>Solver</th>
         <th>Executable</th>
         <th>Main</th>
         <th>Version</th>
         <th>Arguments</th>
+        <th>Input&nbsp;data</th>
+        <th>Output&nbsp;data</th>
         <th>Tags</th>
     </tr>
     </thead>
@@ -83,6 +84,15 @@
         </td>
         <td>{{record.reason|restructuredtext}}</td>
         <td>{{record.outcome|restructuredtext}}</td>
+        <td>{{record.duration|human_readable_duration}}</td>
+        <td>{{record.launch_mode.get_parameters.n|default:"1"}}</td>
+        <td>{{record.solver}}</td>
+        <td>{{record.executable.name}} {{record.executable.version}}</td>
+        <td><a target="script_content" style='cursor:pointer'
+            onclick="window.open('/{{project.id}}/{{record.label}}/script','script_content','width=640,height=600,scrollbars=yes,resizable=yes')">
+            <span class="glyphicon glyphicon-file"></span></a> {{record.main_file|ubreak}}</td>
+        <td>{{record.version|cut:"vers"|truncatechars:10}}{% if record.diff %}*{% endif %}</td>
+        <td>{{record.script_arguments}}</td>
         <td>
             {% for data in record.input_data.all %}
             <a href="/{{project.id}}/data/datafile?path={{data.path|urlencode}}&digest={{data.digest}}&creation={{data.creation|date:"c"}}">
@@ -95,14 +105,6 @@
                 {{data.path|basename|ubreak}}</a>{% if not forloop.last %}, {% endif %}
             {% endfor %}
         </td>
-        <td>{{record.duration|human_readable_duration}}</td>
-        <td>{{record.launch_mode.get_parameters.n|default:"1"}}</td>
-        <td>{{record.executable.name}} {{record.executable.version}}</td>
-        <td><a target="script_content" style='cursor:pointer'
-            onclick="window.open('/{{project.id}}/{{record.label}}/script','script_content','width=640,height=600,scrollbars=yes,resizable=yes')">
-            <span class="glyphicon glyphicon-file"></span></a> {{record.main_file|ubreak}}</td>
-        <td>{{record.version|cut:"vers"|truncatechars:10}}{% if record.diff %}*{% endif %}</td>
-        <td>{{record.script_arguments}}</td>
         <td>{{record.tags}}</td>
     </tr>
     {% endfor %}
@@ -157,15 +159,16 @@
         <div class="checkbox"><label><input type="checkbox" data-column='1' checked="checked"> Date/Time</label></div>
         <div class="checkbox"><label><input type="checkbox" data-column='2' checked="checked"> Reason</label></div>
         <div class="checkbox"><label><input type="checkbox" data-column='3' checked="checked"> Outcome</label></div>
-        <div class="checkbox"><label><input type="checkbox" data-column='4' checked="checked"> Input data</label></div>
-        <div class="checkbox"><label><input type="checkbox" data-column='5' checked="checked"> Output data</label></div>
-        <div class="checkbox"><label><input type="checkbox" data-column='6' checked="checked"> Duration</label></div>
-        <div class="checkbox"><label><input type="checkbox" data-column='7' checked="checked"> Processes</label></div>
-        <div class="checkbox"><label><input type="checkbox" data-column='8' checked="checked"> Executable</label></div>
-        <div class="checkbox"><label><input type="checkbox" data-column='9' checked="checked"> Main</label></div>
-        <div class="checkbox"><label><input type="checkbox" data-column='10' checked="checked"> Version</label></div>
-        <div class="checkbox"><label><input type="checkbox" data-column='11' checked="checked"> Arguments</label></div>
-        <div class="checkbox"><label><input type="checkbox" data-column='12' checked="checked"> Tags</label></div>
+        <div class="checkbox"><label><input type="checkbox" data-column='4' checked="checked"> Duration</label></div>
+        <div class="checkbox"><label><input type="checkbox" data-column='5' checked="checked"> Processes</label></div>
+        <div class="checkbox"><label><input type="checkbox" data-column='6' checked="checked"> Solver</label></div>
+        <div class="checkbox"><label><input type="checkbox" data-column='7' checked="checked"> Executable</label></div>
+        <div class="checkbox"><label><input type="checkbox" data-column='8' checked="checked"> Main</label></div>
+        <div class="checkbox"><label><input type="checkbox" data-column='9' checked="checked"> Version</label></div>
+        <div class="checkbox"><label><input type="checkbox" data-column='10' checked="checked"> Arguments</label></div>
+        <div class="checkbox"><label><input type="checkbox" data-column='11' checked="checked"> Input data</label></div>
+        <div class="checkbox"><label><input type="checkbox" data-column='12' checked="checked"> Output data</label></div>
+        <div class="checkbox"><label><input type="checkbox" data-column='13' checked="checked"> Tags</label></div>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
