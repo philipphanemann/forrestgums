@@ -3,17 +3,22 @@
 ## User Guide
 
 ### Project Configuration
-	
+
 	1. create simulation folder
 	2. create trnsport.gms file
 	3. command line:
-	$ git init 
+	$ git init
 	$ git add .
 	$ git commit -m'initial commit'
-    $ smt init forrest --main trnsport.gms
+    $ smt init forrest --main=trnsport.gms
     $ smt configure --add-plugin=forrest.executable
+    $ smt configure --add-plugin=forrest.datastore
     $ smt configure --executable=gams
     $ smt configure -d .
+
+Use the GAMSListingDataStore instead of the normal FileSystemDataStore. For that replace
+``sumatra.datastore.filesystem.FileSystemDataStore`` with ``forrest.datastore.GAMSListingDataStore``
+in the ``.smt/project``.
 
 Disallow command line parameters by setting `allow_command_line_parameters`
 in `.smt/project` to `false`.
