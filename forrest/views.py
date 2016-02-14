@@ -14,6 +14,14 @@ class RecordDetailView(sumatra.web.views.RecordDetailView):
         return extend_django_record_with_gams_metadata(record)
 
 
+class RecordListView(sumatra.web.views.RecordListView):
+    """A class to add metadata from GAMS result file to record."""
+
+    def get_queryset(self):
+        records = super().get_queryset()
+        return [extend_django_record_with_gams_metadata(record) for record in records]
+
+
 class DataDetailView(sumatra.web.views.DataDetailView):
     """A class to add mimetype to GAMS result files ('*.lst')."""
 
@@ -22,6 +30,15 @@ class DataDetailView(sumatra.web.views.DataDetailView):
         if datakey.path.endswith('.lst'):
             datakey.metadata = datakey.metadata.replace('"mimetype": null', '"mimetype": "text/plain"')
         return datakey
+
+
+class SettingsView(sumatra.web.views.SettingsView):
+    """Fixes the columns of the RecordListView to be viewed."""
+
+    def load_settings(self):
+        settings = super().load_settings()
+        settings['hidden_cols'] = [2, 3, 5, 10, 11]
+        return settings
 
 
 def run(request):
